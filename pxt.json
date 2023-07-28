@@ -11,7 +11,9 @@
         "assets.json",
         "main.py",
         "tilemap.g.jres",
-        "tilemap.g.ts"
+        "tilemap.g.ts",
+        "Enemy.ts",
+        "Bat.ts"
     ],
     "testFiles": [
         "test.ts"
