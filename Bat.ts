@@ -1,6 +1,6 @@
 /// <reference path="Enemy.ts" />
 
-namespace Enemies {
+namespace Pawns {
     export class Bat extends Enemy {
         constructor() {
             super(img`

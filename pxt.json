@@ -12,6 +12,8 @@
         "main.py",
         "tilemap.g.jres",
         "tilemap.g.ts",
+        "Pawn.ts",
+        "Player.ts",
         "Enemy.ts",
         "Bat.ts"
     ],
