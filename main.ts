@@ -3,7 +3,7 @@
 function on_update_interval() {
     bat1.on_update()
     bat2.on_update()
-    //player.on_update()
+    player.on_update()
 }
 
 
@@ -41,5 +41,6 @@ animation.runMovementAnimation(
 )
 
 let player = createPlayer(tiles.getTileLocation(0, 0))
+controller.moveSprite(player, 40, 40)
 
 game.onUpdateInterval(33, on_update_interval)

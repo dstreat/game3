@@ -1,5 +1,6 @@
 namespace Pawns {
     export enum Direction {
+        Stopped = 0,
         Left = 1,
         Right,
         Down,
@@ -42,7 +43,10 @@ namespace Pawns {
                 } else if (this.directionAnims[Direction.Up] != null && this.LastY - this.y > 0 && this.currAnimDir != Direction.Up) {
                     animation.runImageAnimation(this, this.directionAnims[Direction.Up], 175, true)
                     this.currAnimDir = Direction.Up
-                }    
+                } else if (this.LastX == this.x && this.LastY == this.y) {
+                    animation.stopAnimation(animation.AnimationTypes.ImageAnimation, this)
+                    this.currAnimDir = Direction.Stopped
+                }   
             }
     
             this.LastX = this.x
