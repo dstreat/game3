@@ -21,7 +21,7 @@ namespace Pawns {
             . b c c e e e c c e e e c c b . 
             `);
     
-            this.AddDirectionAnim(Direction.Right, [img`
+            this.AddDirectionAnim(Direction.Left, [img`
             . . . . . . b b b b . . . . . . 
             . . . e e e e b b b b b . . . . 
             . . e e e e e e b b d b b b . . 
@@ -90,7 +90,7 @@ namespace Pawns {
             . . . . e e b c b b c b b . . . 
             . . . e e e b b b c b b . . . . 
             `])
-            this.AddDirectionAnim(Direction.Left, [img`
+            this.AddDirectionAnim(Direction.Right, [img`
             . . . . . . b b b b . . . . . . 
             . . . . b b b b b e e e e . . . 
             . . b b b d b b e e e e e e . . 
