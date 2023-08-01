@@ -44,3 +44,7 @@ let player = createPlayer(tiles.getTileLocation(0, 0))
 controller.moveSprite(player, 40, 40)
 
 game.onUpdateInterval(33, on_update_interval)
+
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    player.Attack()
+})

@@ -1,6 +1,11 @@
+namespace SpriteKind {
+    export const Weapon = SpriteKind.create()
+}
+
 namespace Pawns {   
     export class Player extends Pawn {
-    
+        sword: Sprite
+
         constructor() {
             super(img`
             . . . . . b b b b b b . . . . . 
@@ -301,6 +306,101 @@ namespace Pawns {
     
         RegisterPlayer(sceneToRegister: scene.Scene) {
             this.Register(sceneToRegister, SpriteKind.Player)
+        }
+
+        Attack() {
+            if (this.currAnimDir == 0) {
+                this.sword = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . b b b . . . . . . . . . . . 
+            . . b d b . . . . . . . . . . . 
+            . . b d b b b b b b b b b b . . 
+            b b b d b d d d d d d d d d b . 
+            d d b d b d d d d d d d d d d b 
+            b b b d b d d d d d d d d d b . 
+            . . b d b b b b b b b b b b . . 
+            . . b d b . . . . . . . . . . . 
+            . . b b b . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Weapon)
+                this.ExtendSword(false, 16)
+            } else if (this.currAnimDir == 1) {
+                this.sword = sprites.create(img`
+            . . . . . . . b d b . . . . . . 
+            . . . . . . . b d b . . . . . . 
+            . . . . b b b b b b b b b . . . 
+            . . . . b d d d d d d d b . . . 
+            . . . . b b b b b b b b b . . . 
+            . . . . . . b d d d b . . . . . 
+            . . . . . . b d d d b . . . . . 
+            . . . . . . b d d d b . . . . . 
+            . . . . . . b d d d b . . . . . 
+            . . . . . . b d d d b . . . . . 
+            . . . . . . b d d d b . . . . . 
+            . . . . . . b d d d b . . . . . 
+            . . . . . . b d d d b . . . . . 
+            . . . . . . b d d d b . . . . . 
+            . . . . . . . b d b . . . . . . 
+            . . . . . . . . b . . . . . . . 
+            `, SpriteKind.Weapon)
+                this.ExtendSword(true, 16)
+            } else if (this.currAnimDir == 2) {
+                this.sword = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . b b b . . 
+            . . . . . . . . . . . b d b . . 
+            . . b b b b b b b b b b d b . . 
+            . b d d d d d d d d d b d b b b 
+            b d d d d d d d d d d b d b d d 
+            . b d d d d d d d d d b d b b b 
+            . . b b b b b b b b b b d b . . 
+            . . . . . . . . . . . b d b . . 
+            . . . . . . . . . . . b b b . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Weapon)
+                this.ExtendSword(false, -16)
+            } else {
+                this.sword = sprites.create(img`
+            . . . . . . . b . . . . . . . . 
+            . . . . . . b d b . . . . . . . 
+            . . . . . b d d d b . . . . . . 
+            . . . . . b d d d b . . . . . . 
+            . . . . . b d d d b . . . . . . 
+            . . . . . b d d d b . . . . . . 
+            . . . . . b d d d b . . . . . . 
+            . . . . . b d d d b . . . . . . 
+            . . . . . b d d d b . . . . . . 
+            . . . . . b d d d b . . . . . . 
+            . . . . . b d d d b . . . . . . 
+            . . . b b b b b b b b b . . . . 
+            . . . b d d d d d d d b . . . . 
+            . . . b b b b b b b b b . . . . 
+            . . . . . . b d b . . . . . . . 
+            . . . . . . b d b . . . . . . . 
+            `, SpriteKind.Weapon)
+                this.ExtendSword(true, -16)
+            }
+        }
+
+        ExtendSword (vert: boolean, offset: number) {
+            if (vert) {
+                this.sword.setPosition(this.x, this.y + offset)
+            } else {
+                this.sword.setPosition(this.x + offset, this.y)
+            }
+            controller.moveSprite(this.sword, 50, 50)
+            pause(250)
+            sprites.destroy(this.sword)
         }
     }
 }
