@@ -49,7 +49,13 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     player.Attack()
 })
 
-sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite2, otherSprite2) { 
-    let playerSprite = otherSprite2 as Pawns.Player;
-    playerSprite.OnEnemyOverlap(sprite2.x, sprite2.y)
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) { 
+    let playerSprite = otherSprite as Pawns.Player;
+    playerSprite.OnEnemyOverlap(sprite.x, sprite.y)
+})
+
+sprites.onOverlap(SpriteKind.Weapon, SpriteKind.Enemy, function (sprite, otherSprite) {
+    let enemySprite = otherSprite as Pawns.Enemy;
+    enemySprite.Destroy()
+    info.changeScoreBy(enemySprite.PointValue)
 })

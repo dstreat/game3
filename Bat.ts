@@ -3,6 +3,8 @@
 namespace Pawns {
     export class Bat extends Enemy {
         constructor() {
+            let BAT_POINTS = 1
+            let DURATION = 100
             super(img`
             . . f f f . . . . . . . . f f f 
             . f f c c . . . . . . f c b b c 
@@ -20,7 +22,7 @@ namespace Pawns {
             . f b b b b b b b b c f . . . . 
             . . f b b b b b b c f . . . . . 
             . . . f f f f f f f . . . . . . 
-            `);
+            `, BAT_POINTS, effects.ashes, DURATION);
     
             this.AddDirectionAnim(Direction.Right, [img`
             f f f . . . . . . . . f f f . . 
