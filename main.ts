@@ -48,3 +48,8 @@ game.onUpdateInterval(33, on_update_interval)
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     player.Attack()
 })
+
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite2, otherSprite2) { 
+    let playerSprite = otherSprite2 as Pawns.Player;
+    playerSprite.OnEnemyOverlap(sprite2.x, sprite2.y)
+})

@@ -302,6 +302,9 @@ namespace Pawns {
             . . b b b b c b c e e e b b c . 
             . . . b b b b b b e e e b b b . 
             `])
+
+            info.setLife(3)
+            info.setScore(0)
         }
     
         RegisterPlayer(sceneToRegister: scene.Scene) {
@@ -313,7 +316,7 @@ namespace Pawns {
             let leftOffset = -11;
             let upOffset = -16;
             let downOffset = 13;
-            
+
             if (this.currAnimDir == Direction.Right) { 
                 this.sword = sprites.create(img`
                     .......................
@@ -420,6 +423,29 @@ namespace Pawns {
             controller.moveSprite(this.sword, 50, 50)
             pause(250)
             sprites.destroy(this.sword)
+        }
+
+        OnEnemyOverlap(enemyX: number, enemyY: number) {
+            let BOUNCE_SCALE = 1.2
+            let TILE_PIXEL_SIZE = 16
+            let SPRITE_TILE_OFFSET = 7
+            let xBounce = (this.x - enemyX) * BOUNCE_SCALE
+            let maxXBounce = 0
+            if (xBounce != 0 && tiles.tileAtLocationIsWall(tiles.getTileLocation(this.tilemapLocation().column + xBounce / Math.abs(xBounce), this.tilemapLocation().row))) {
+                maxXBounce = this.tilemapLocation().column * TILE_PIXEL_SIZE + SPRITE_TILE_OFFSET - this.x
+            } else {
+                maxXBounce = xBounce
+            }
+            this.x += maxXBounce
+            let yBounce = (this.y - enemyY) * BOUNCE_SCALE
+            let maxYBounce = 0
+            if (yBounce != 0 && tiles.tileAtLocationIsWall(tiles.getTileLocation(this.tilemapLocation().column, this.tilemapLocation().row + yBounce / Math.abs(yBounce)))) {
+                maxYBounce = this.tilemapLocation().row * TILE_PIXEL_SIZE + SPRITE_TILE_OFFSET - this.y
+            } else {
+                maxYBounce = yBounce
+            }
+            this.y += maxYBounce
+            info.changeLifeBy(-1)
         }
     }
 }
