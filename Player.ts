@@ -309,7 +309,11 @@ namespace Pawns {
         }
 
         Attack() {
-            console.log(this.currAnimDir)
+            let rightOffset = 11;
+            let leftOffset = -11;
+            let upOffset = -16;
+            let downOffset = 13;
+            
             if (this.currAnimDir == Direction.Right) { 
                 this.sword = sprites.create(img`
                     .......................
@@ -329,7 +333,7 @@ namespace Pawns {
                     .......................
                     .......................
                 `, SpriteKind.Weapon)
-                this.ExtendSword(false, 11)
+                this.ExtendSword(false, rightOffset)
             } else if (this.currAnimDir == Direction.Left) {
                 this.sword = sprites.create(img`
                     .......................
@@ -349,7 +353,7 @@ namespace Pawns {
                     .......................
                     .......................
                 `, SpriteKind.Weapon)
-                this.ExtendSword(false, -11)
+                this.ExtendSword(false, leftOffset)
             } else if (this.currAnimDir == Direction.Up) {
                 this.sword = sprites.create(img`
                     .....c..........
@@ -376,7 +380,7 @@ namespace Pawns {
                     .....bb.........
                     .....bb.........
                 `, SpriteKind.Weapon)
-                this.ExtendSword(true, -16)
+                this.ExtendSword(true, upOffset)
             } else if (this.currAnimDir == Direction.Down) {
                 this.sword = sprites.create(img`
                     ...........bbbb.
@@ -403,7 +407,7 @@ namespace Pawns {
                     ...........c1c..
                     ............c...
                 `, SpriteKind.Weapon)
-                this.ExtendSword(true, 13)
+                this.ExtendSword(true, downOffset)
             }
         }
 
