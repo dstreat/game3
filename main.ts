@@ -6,7 +6,7 @@ function on_update_interval() {
     player.on_update()
 }
 
-//I added a comment
+//I added a comment and another
 function createBat (startLocation: tiles.Location) : Pawns.Bat {
     const scene = game.currentScene();
     const bat = new Pawns.Bat()
